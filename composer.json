@@ -1,5 +1,5 @@
 {
-    "name": "unibasil/PDODblibBundle",
+    "name": "PDODblibBundle/PDODblibBundle",
     "version": "1.0.0",
     "dist": {
         "url": "https://github.com/unibasil/PDODblibBundle.git",
