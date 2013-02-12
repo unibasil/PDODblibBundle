@@ -1,8 +1,8 @@
 {
-    "name": "PDODblibBundle/PDODblibBundle",
+    "name": "unibasil/pdodblib",
     "version": "1.0.0",
     "dist": {
-        "url": "https://github.com/unibasil/PDODblibBundle.git",
+        "url": "https://github.com/unibasil/PDODblibBundle/archive/master.zip",
         "type": "zip"
     }
 }
