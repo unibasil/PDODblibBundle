@@ -1,6 +1,6 @@
 {
     "packages": {
-        "unibasil/PDODblibBundle": {
+        "unibasil/pdodblib": {
             "1.0.0": { @composer.json }
         }
     }
