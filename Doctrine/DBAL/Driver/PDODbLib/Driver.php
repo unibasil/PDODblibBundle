@@ -19,15 +19,17 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\DBAL\Driver\PDODblib;
+namespace Doctrine\DBAL\Driver\PDODbLib;
 
 /**
- * The PDO-based Dblib driver.
+ * The PDO-based DbLib driver.
  *
  * @since 2.0
  */
-class Driver implements \Doctrine\DBAL\Driver {
-	public function connect(array $params, $username = null, $password = null, array $driverOptions = array()) {
+class Driver implements \Doctrine\DBAL\Driver
+{
+	public function connect(array $params, $username = null, $password = null, array $driverOptions = array())
+	{
 		return new Connection(
 			$this->_constructPdoDsn($params),
 			$username,
@@ -37,11 +39,13 @@ class Driver implements \Doctrine\DBAL\Driver {
 	}
 
 	/**
-	 * Constructs the Dblib PDO DSN.
+	 * Constructs the PDO_DBLIB  DSN.
 	 *
+	 * @param array $params
 	 * @return string  The DSN.
 	 */
-	private function _constructPdoDsn(array $params) {
+	private function _constructPdoDsn(array $params)
+	{
 		$dsn = 'dblib:host=';
 
 		if (isset($params['host'])) {
@@ -59,12 +63,12 @@ class Driver implements \Doctrine\DBAL\Driver {
 		return $dsn;
 	}
 
-	public function getDatabasePlatform() {
-		
+	public function getDatabasePlatform()
+	{
 		if (class_exists('\\Doctrine\\DBAL\\Platforms\\SQLServer2008Platform')) {
 			return new \Doctrine\DBAL\Platforms\SQLServer2008Platform();
 		}
-		
+
 		if (class_exists('\\Doctrine\\DBAL\\Platforms\\SQLServer2005Platform')) {
 			return new \Doctrine\DBAL\Platforms\SQLServer2005Platform();
 		}
@@ -72,25 +76,28 @@ class Driver implements \Doctrine\DBAL\Driver {
 		if (class_exists('\\Doctrine\\DBAL\\Platforms\\MsSqlPlatform')) {
 			return new \Doctrine\DBAL\Platforms\MsSqlPlatform();
 		}
+		return null;
 	}
 
-	public function getSchemaManager(\Doctrine\DBAL\Connection $conn) {
+	public function getSchemaManager(\Doctrine\DBAL\Connection $conn)
+	{
 		if (class_exists('\\Doctrine\\DBAL\\Schema\\SQLServerSchemaManager')) {
 			return new \Doctrine\DBAL\Schema\SQLServerSchemaManager($conn);
 		}
 
 		if (class_exists('\\Doctrine\\DBAL\\Schema\\MsSqlSchemaManager')) {
-			return new \PDODblibBundle\Doctrine\DBAL\Schema\PDODblibSchemaManager($conn);
+			return new \PDODbLibBundle\Doctrine\DBAL\Schema\PDODbLibSchemaManager($conn);
 		}
-
-
+		return null;
 	}
 
-	public function getName() {
+	public function getName()
+	{
 		return 'pdo_dblib';
 	}
 
-	public function getDatabase(\Doctrine\DBAL\Connection $conn) {
+	public function getDatabase(\Doctrine\DBAL\Connection $conn)
+	{
 		$params = $conn->getParams();
 		return $params['dbname'];
 	}

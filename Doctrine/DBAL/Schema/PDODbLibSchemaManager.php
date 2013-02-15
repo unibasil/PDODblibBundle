@@ -17,14 +17,14 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace PDODblibBundle\Doctrine\DBAL\Schema;
+namespace Doctrine\DBAL\Schema;
 
 /**
- * The PDO-based Dblib schema manager.
+ * The PDO-based DbLib schema manager.
  *
  * @since 2.0
  */
-class PDODblibSchemaManager extends \Doctrine\DBAL\Schema\MsSqlSchemaManager {
+class PDODbLibSchemaManager extends \Doctrine\DBAL\Schema\MsSqlSchemaManager {
 
     /**
      * @override

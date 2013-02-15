@@ -19,21 +19,23 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\DBAL\Driver\PDODblib;
+namespace Doctrine\DBAL\Driver\PDODbLib;
 
 /**
- * PDODblib Connection implementation.
+ * PDODbLib Connection implementation.
  *
  * @since 2.0
  */
-class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrine\DBAL\Driver\Connection {
-
+class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrine\DBAL\Driver\Connection
+{
 	protected $_pdoTransactionsSupport = null;
 	protected $_pdoLastInsertIdSupport = null;
+
 	/**
 	 * @override
 	 */
-	public function quote($value, $type = \PDO::PARAM_STR) {
+	public function quote($value, $type = \PDO::PARAM_STR)
+	{
 		$val = parent::quote($value, $type);
 
 		// Fix for a driver version terminating all values with null byte
@@ -47,7 +49,8 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
 	/**
 	 * @return bool PDO_DBlib transaction support
 	 */
-	private function _pdoTransactionsSupported() {
+	private function _pdoTransactionsSupported()
+	{
 		if (!is_null($this->_pdoTransactionsSupport)) {
 			return $this->_pdoTransactionsSupport;
 		}
@@ -69,7 +72,8 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
 	/**
 	 * {@inheritdoc}
 	 */
-	public function rollback() {
+	public function rollback()
+	{
 		if ($this->_pdoTransactionsSupported() === true) {
 			parent::rollback();
 		} else {
@@ -80,7 +84,8 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
 	/**
 	 * {@inheritdoc}
 	 */
-	public function commit() {
+	public function commit()
+	{
 		if ($this->_pdoTransactionsSupported() === true) {
 			parent::commit();
 		} else {
@@ -91,7 +96,8 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
 	/**
 	 * {@inheritdoc}
 	 */
-	public function beginTransaction() {
+	public function beginTransaction()
+	{
 		if ($this->_pdoTransactionsSupported() === true) {
 			parent::beginTransaction();
 		} else {
@@ -102,7 +108,8 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
 	/**
 	 * @return bool PDO_DBlib::lastInsertId support
 	 */
-	private function _pdoLastInsertId() {
+	private function _pdoLastInsertId()
+	{
 		if (!is_null($this->_pdoLastInsertIdSupport)) {
 			return $this->_pdoLastInsertIdSupport;
 		}
@@ -121,7 +128,8 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
 	/**
 	 * {@inheritdoc}
 	 */
-	public function lastInsertId($name = null) {
+	public function lastInsertId($name = null)
+	{
 		$id = null;
 		if ($this->_pdoLastInsertId() === true) {
 			$id = parent::lastInsertId();
