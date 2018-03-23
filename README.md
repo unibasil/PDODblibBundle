@@ -29,6 +29,8 @@ In your Symfony2 project, modify your `config.yml` as follows to use the DBlib b
 
 ```yml
 # Doctrine Configuration
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Funibasil%2FPDODblibBundle.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Funibasil%2FPDODblibBundle?ref=badge_shield)
+
 doctrine:
     dbal:
         driver_class:   PDODblibBundle\Doctrine\DBAL\Driver\PDODblib\Driver
@@ -91,3 +93,7 @@ It's possible, but not easy. Here's what I did:
 - Hack the Doctrine core to skip any tables without primary keys
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Funibasil%2FPDODblibBundle.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Funibasil%2FPDODblibBundle?ref=badge_large)
